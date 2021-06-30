@@ -4,7 +4,7 @@ import Product from '../components/Product';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 
-export default function HomeScreen() {
+export default function HomeScreen() { 
 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
