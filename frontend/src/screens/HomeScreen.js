@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import axios from 'axios';
+import Axios from 'axios';
 import Product from '../components/Product';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
