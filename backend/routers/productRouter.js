@@ -47,7 +47,6 @@ productRouter.get(
 productRouter.post(
   '/',
   isAuth,
-  isAdmin,
   isSellerOrAdmin,
   expressAsyncHandler(async (req, res) => {
     const product = new Product({
@@ -71,7 +70,6 @@ productRouter.put(
   '/:id',
   isAuth,
   isSellerOrAdmin,
-  isAdmin,
   expressAsyncHandler(async (req, res) => {
     const productId = req.params.id;
     const product = await Product.findById(productId);
