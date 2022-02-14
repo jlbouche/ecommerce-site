@@ -61,21 +61,21 @@ function App() {
   return (
     <BrowserRouter>
       <div className="grid-container">
-        <header className="row">
-          <button
+      <header className="row">
+          <div>
+            <button
               type="button"
               className="open-sidebar"
               onClick={() => setSidebarIsOpen(true)}
-          >
+            >
               <i className="fa fa-bars"></i>
-          </button>
-          <div>
+            </button>
             <Link className="brand" to="/">
               Malus Minus
             </Link>
           </div>
           <div>
-            <Route render={({history}) => <SearchBox history={history}/>}/>
+            <SearchBox />
           </div>
           <div>
             <Link to="/cart">
@@ -106,31 +106,27 @@ function App() {
             ) : (
               <Link to="/signin">Sign In</Link>
             )}
-          </div>
-          {userInfo && userInfo.isSeller && (
-            <div className="dropdown">
-              <Link to="#admin">
-                Seller <i className="fa fa-caret-down"></i>
-              </Link>
-              <ul className="dropdown-content">
-                <li>
-                  <Link to="/productlist/seller">Products</Link>
-                </li>
-                <li>
-                  <Link to="/orderlist/seller">Orders</Link>
-                </li>
-              </ul>
-            </div>
-          )}
-          {userInfo && userInfo.isAdmin && (
+            {userInfo && userInfo.isSeller && (
+              <div className="dropdown">
+                <Link to="#admin">
+                  Seller <i className="fa fa-caret-down"></i>
+                </Link>
+                <ul className="dropdown-content">
+                  <li>
+                    <Link to="/productlist/seller">Products</Link>
+                  </li>
+                  <li>
+                    <Link to="/orderlist/seller">Orders</Link>
+                  </li>
+                </ul>
+              </div>
+            )}
+            {userInfo && userInfo.isAdmin && (
               <div className="dropdown">
                 <Link to="#admin">
                   Admin <i className="fa fa-caret-down"></i>
                 </Link>
                 <ul className="dropdown-content">
-                  <li>
-                    <Link to="/dashboard">Dashboard</Link>
-                  </li>
                   <li>
                     <Link to="/productlist">Products</Link>
                   </li>
@@ -143,6 +139,7 @@ function App() {
                 </ul>
               </div>
             )}
+          </div>
         </header>
         <aside className={sidebarIsOpen ? 'open' : ''}>
           <ul className="categories">
